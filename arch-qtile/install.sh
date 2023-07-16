@@ -136,30 +136,17 @@ function installMenu(){
   done
 }
 
-#../ascii-art.sh
-#check_install_dependencies
-#installMenu
+../ascii-art.sh
+echo "#################################################"
+echo "#############  PACKAGE ##########################"
+echo "################ INSTALLATION ###################"
+echo "#################################################"
+check_install_dependencies
 
+#installMenu
 install_base_packages
 install_aur_packages
 install_pip_packages
-
-#### Driver install
-# Choose which driver to install uncomenting the line below
-#
-# AMD
-# pacman -S xf86-video-amdgpu
-#
-# Nvidia
-# pacman -S nvidia
-#
-# VMWare
-#pacman -S xf86-video-vmware
-#
-
-## Install NVM
-#echo "Installing NVM..."
-#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 #echo "Configuring X..."
 #Xorg :0 -configure

@@ -5,6 +5,7 @@ openssh
 rofi
 xorg-server
 xorg-xrandr
+xorg-xinit
 xorg-xset
 xdotool
 xclip
