@@ -96,7 +96,7 @@ function install_pip_packages()
   while read -r PACKAGE; do
     ((count++))
 
-    pip install -r "${$PIP_PACKAGES_FILE}" --break-system-packages
+    pip install -r "$PIP_PACKAGES_FILE" --break-system-packages
 
     PERCENTAGE=$((count * 100 / TOTAL_PACKAGE))
 
