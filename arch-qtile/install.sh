@@ -148,8 +148,13 @@ function installMenu(){
 }
 
 #../ascii-art.sh
-check_install_dependencies
-installMenu
+#check_install_dependencies
+#installMenu
+
+base_install
+pip_install
+paru_install
+aur_install
 
 #### Driver install
 # Choose which driver to install uncomenting the line below
