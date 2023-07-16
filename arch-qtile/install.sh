@@ -12,7 +12,11 @@ columns=$(echo $screen_size | awk '{print $2}')
 r=$(( rows / 2 ))
 c=$(( columns / 2 ))
 
-function base ()
+check_install_dependencies() {
+  sudo pacman -S extra/libnewt
+}
+
+base ()
 {
   echo "::::: Installing base packages :::::"
   while read -r package; do
@@ -21,7 +25,7 @@ function base ()
   done < "$BASE_PACKAGES_FILE"
 }
 
-function paru_install(){
+paru_install(){
   echo "::::: Installing paru AUR helper :::::"
   git clone https://aur.archlinux.org/paru.git 
   cd paru 
@@ -63,6 +67,7 @@ installMenu(){
 
 }
 
+check_install_dependencies
 installMenu
 
 #### Driver install
