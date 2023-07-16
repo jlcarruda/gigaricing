@@ -16,6 +16,7 @@ fi
 ## Configure XORG
 Xorg :0 -configure
 sudo cp $HOME/xorg.conf.new /etc/X11/xorg.conf
+rm $HOME/xorg.conf.new
 
 ## copy XInitRC to home
 cp ./dotfiles/.xinitrc ~/.xinitrc
