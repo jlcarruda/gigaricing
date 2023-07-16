@@ -14,7 +14,7 @@ if ! [ -x "$(command -v zsh)" ]; then
 fi
 
 ## Configure XORG
-Xorg :0 --configure
+Xorg :0 -configure
 sudo cp /root/xorg.conf.new /etc/X11/xorg.conf
 
 ## copy XInitRC to home
