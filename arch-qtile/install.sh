@@ -37,7 +37,7 @@ r=$(( rows / 2 ))
 c=$(( columns / 2 ))
 
 function check_install_dependencies() {
-  sudo pacman -S --noconfirm extra/libnewt python-pip "$VIDEO_DRIVER"
+  sudo pacman -S --noconfirm extra/libnewt python-pip  "$VIDEO_DRIVER"
 }
 
 function install_base_packages()
@@ -151,10 +151,9 @@ function installMenu(){
 #check_install_dependencies
 #installMenu
 
-base_install
-pip_install
-paru_install
-aur_install
+install_base_packages
+install_aur_packages
+install_pip_packages
 
 #### Driver install
 # Choose which driver to install uncomenting the line below
