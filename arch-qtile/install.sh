@@ -93,18 +93,7 @@ function install_pip_packages()
   TOTAL_PACKAGES=$(wc -l < "$PIP_PACKAGES_FILE")
   count=0
   
-  while read -r PACKAGE; do
-    ((count++))
-
-    pip install -r "$PIP_PACKAGES_FILE" --break-system-packages
-
-    PERCENTAGE=$((count * 100 / TOTAL_PACKAGE))
-
-    echo "::: "
-    echo "Installing $PACKAGE..."
-    echo "$PERCENTAGE"
-    sleep 1
-  done < "$PIP_PACKAGES_FILE"
+  pip install -r "$PIP_PACKAGES_FILE" --break-system-packages
 
   echo "::: "
   echo "Installation complete!"
