@@ -36,11 +36,11 @@ columns=$(echo $screen_size | awk '{print $2}')
 r=$(( rows / 2 ))
 c=$(( columns / 2 ))
 
-check_install_dependencies() {
+function check_install_dependencies() {
   sudo pacman -S --noconfirm extra/libnewt python-pip "$VIDEO_DRIVER"
 }
 
-install_base_packages()
+function install_base_packages()
 {
   echo "::::: Installing base packages :::::"
   while read -r package; do
@@ -52,13 +52,15 @@ install_base_packages()
   echo "Instalation complete!"
 }
 
-base_install(){
+function base_install()
+{
   whiptail --msgbox --backtitle "GIGA Installer $VER" --title "Base Packages Install" "The base packages needed for GIGA to work will be installed now \n \n Click OK to Continue" ${r} ${c}
     
   whiptail --title "Package Installation" --gauge "Installing ..." 6 50 0 < <(install_base_packages) 2>&1
 }
 
-paru_install(){
+function paru_install()
+{
   echo "::::: Installing paru AUR helper :::::"
   git clone https://aur.archlinux.org/paru.git 
   cd paru 
@@ -67,7 +69,7 @@ paru_install(){
   rm -rf paru
 }
 
-install_aur_packages()
+function install_aur_packages()
 {
   echo "::::: Installing AUR Packages :::::"
   while read -r package; do
@@ -79,13 +81,14 @@ install_aur_packages()
   echo "Instalation complete!"
 }
 
-aur_install(){
+function aur_install()
+{
   whiptail --msgbox --backtitle "GIGA Installer $VER" --title "AUR Packages Install" "The base packages needed for GIGA to work will be installed now \n \n Click OK to Continue" ${r} ${c}
     
   whiptail --title "AUR Package Installation" --gauge "Installing ..." 6 50 0 < <(install_aur_packages) 2>&1
 }
 
-install_pip_packages()
+function install_pip_packages()
 {
   TOTAL_PACKAGES=$(wc -l < "$PIP_PACKAGES_FILE")
   count=0
@@ -107,13 +110,14 @@ install_pip_packages()
   echo "Installation complete!"
 }
 
-pip_install() {
+function pip_install()
+{
   whiptail --msgbox --backtitle "GIGA Installer $VER" --title "Pip Packages Install" "The base packages needed for GIGA to work will be installed now \n \n Click OK to Continue" ${r} ${c}
     
   whiptail --title "Pip Package Installation" --gauge "Installing ..." 6 50 0 < <(install_pip_packages) 2>&1
 }
 
-installMenu(){
+function installMenu(){
   CHOICES=$(whiptail --menu "GIGA Rice Installation" ${r} ${c} 5 \
   "Install Base Packages" " " \
   "Install Pip Packages" " " \
@@ -143,7 +147,7 @@ installMenu(){
   done
 }
 
-../ascii-art.sh
+#../ascii-art.sh
 check_install_dependencies
 installMenu
 
