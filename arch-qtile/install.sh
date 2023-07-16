@@ -52,7 +52,7 @@ install_base_packages()
   echo "Instalation complete!"
 }
 
-baseInstall(){
+base_install(){
   whiptail --msgbox --backtitle "GIGA Installer $VER" --title "Base Packages Install" "The base packages needed for GIGA to work will be installed now \n \n Click OK to Continue" ${r} ${c}
     
   whiptail --title "Package Installation" --gauge "Installing ..." 6 50 0 < <(install_base_packages) 2>&1
