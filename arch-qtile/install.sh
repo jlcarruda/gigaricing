@@ -4,6 +4,13 @@ NODE_VERSION="18"
 VIDEO_DRIVER="xf86-video-vmware"
 BASE_PACKAGES_FILE='base-packages.txt'
 
+screen_size=$(stty size 2>/dev/null || echo 24 80)
+rows=$(echo $screen_size | awk '{print $1}')
+columns=$(echo $screen_size | awk '{print $2}')
+
+# Dialog Screen
+r=$(( rows / 2 ))
+c=$(( columns / 2 ))
 
 function base ()
 {
